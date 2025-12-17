@@ -6,8 +6,16 @@ export default function AddUser({ setUsers }) {
   const navigate = useNavigate();
 
   const handleAddUser = (formData) => {
-    setUsers((prevUsers) => [...prevUsers, { id: Date.now(), ...formData }]);
-    navigate("/users"); // go back after adding
+    setUsers((prevUsers) =>{
+      const newId = 
+      prevUsers.length > 0 
+      ? prevUsers[prevUsers.length-1].id +1
+      : 1;
+      return   [...prevUsers, { id:newId, ...formData }];
+      
+    } );
+      navigate("/users"); // go back after adding
+   
   };
 
   return (
